@@ -30,9 +30,7 @@ update msg model =
       model - 1
 
     -- Add reset msg
-    Reset ->
-      model - model
-
+    Reset -> 0
 
 -- VIEW
 
