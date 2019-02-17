@@ -18,7 +18,7 @@ init =
 
 -- UPDATE
 
-type Msg = Increment | Decrement
+type Msg = Increment | Decrement | Reset
 
 update : Msg -> Model -> Model
 update msg model =
@@ -29,6 +29,10 @@ update msg model =
     Decrement ->
       model - 1
 
+    -- Add reset msg
+    Reset ->
+      model - model
+
 
 -- VIEW
 
@@ -38,4 +42,6 @@ view model =
     [ button [ onClick Decrement ] [ text "-" ]
     , div [] [ text (String.fromInt model) ]
     , button [ onClick Increment ] [ text "+" ]
+    , div [] [ text "" ] -- 改行したかったのですが、brに該当するものがわからず…
+    , button [ onClick Reset ] [ text "Reset" ]
     ]
