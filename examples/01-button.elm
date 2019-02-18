@@ -9,11 +9,12 @@ main =
 
 -- MODEL
 
+initValue = 0
+
 type alias Model = Int
 
 init : Model
-init =
-  0
+init = initValue
 
 
 -- UPDATE
@@ -29,8 +30,7 @@ update msg model =
     Decrement ->
       model - 1
 
-    -- Add reset msg
-    Reset -> 0
+    Reset -> initValue
 
 -- VIEW
 
@@ -40,6 +40,7 @@ view model =
     [ button [ onClick Decrement ] [ text "-" ]
     , div [] [ text (String.fromInt model) ]
     , button [ onClick Increment ] [ text "+" ]
-    , div [] [ text "" ] -- 改行したかったのですが、brに該当するものがわからず…
-    , button [ onClick Reset ] [ text "Reset" ]
+    , div [] [
+               button [ onClick Reset ] [ text "Reset" ]
+             ]
     ]
